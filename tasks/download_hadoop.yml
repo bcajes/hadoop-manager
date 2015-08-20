@@ -8,7 +8,7 @@
   
 - name: Set some kernel parameters
   lineinfile:
-    dest: /home/{{hadoop_user}}
+    dest: /home/{{hadoop_user}}/.bashrc
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
   with_items:
@@ -24,13 +24,4 @@
     
 #- name: Create link to hadoop bin
 #  file: src={{ install_directory }}/hadoop-{{ hadoop_version}}/bin/hadoop dest=/usr/local/bin/hadoop force=true state=link
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-export HADOOP_INSTALL=/usr/local/hadoop
-export PATH=$PATH:$HADOOP_INSTALL/bin
-export PATH=$PATH:$HADOOP_INSTALL/sbin
-export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
-export HADOOP_COMMON_HOME=$HADOOP_INSTALL
-export HADOOP_HDFS_HOME=$HADOOP_INSTALL
-export YARN_HOME=$HADOOP_INSTALL
-export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
-export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
+
