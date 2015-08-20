@@ -2,3 +2,6 @@
 - name: Download Hadoop Distribution
   get_url: {{ distribution_link }} dest={{ install_directory }} mode=0776
   when: action == 'download' 
+
+- name: Untar hadoop package
+  shell: cd {{ install_directory }} && tar xzvf hadoop-*.tar.gz && mv hadoop-* hadoop
