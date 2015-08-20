@@ -4,7 +4,7 @@
 java_home: "/usr/lib/jvm/java-8-oracle/"
 jsvc_home: "/usr/bin/jsvc"
 hostfile: '{{ inventory_dir }}/{{ inventory_file }}'
-install_directory: "/data2/"
+install_directory: "/data/"
 hadoop_version: "2.6.0"
 hadoop_user: "brian.cajes"
 distribution_link: "http://mirror.olnevhost.net/pub/apache/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz"
