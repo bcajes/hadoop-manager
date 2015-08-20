@@ -6,7 +6,7 @@
 - name: Untar hadoop package
   shell: cd {{ install_directory }} && tar xzvf hadoop-{{ hadoop_version }}.tar.gz 
   
-- name: Set some kernel parameters
+- name: Set Hadoop env vars in bashrc
   lineinfile:
     dest: /home/{{hadoop_user}}/.bashrc
     regexp: "{{ item.regexp }}"
