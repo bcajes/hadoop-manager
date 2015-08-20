@@ -5,9 +5,6 @@
 
 - name: Untar hadoop package
   shell: cd {{ install_directory }} && tar xzvf hadoop-{{ hadoop_version }}.tar.gz 
-
-- name: Link hadoop version
-  file: src={{ install_directory }}/hadoop/bin/hadoop-{{hadoop_version}} dest=/usr/local/bin/hadoop force=true state=link
   
 - name: Create link to hadoop bin
-  file: src={{ install_directory }}/hadoop/bin/hadoop dest={{/usr/local/bin/hadoop}} force=true state=link
+  file: src={{ install_directory }}/hadoop-{{ hadoop_version}}/bin/hadoop dest=/usr/local/bin/hadoop force=true state=link
