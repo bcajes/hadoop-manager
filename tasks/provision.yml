@@ -11,13 +11,13 @@
     - hdfs
     - yarn
 
-- name: add mapred user for JobHistoryServer
-  user: name=mapred generate_ssh_key=yes state=present password={{ mapred_user_pass }} groups=users
-  when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['JobHistoryServer'] }}"
+#- name: add mapred user for JobHistoryServer
+#  user: name=mapred generate_ssh_key=yes state=present password={{ mapred_user_pass }} groups=users
+#  when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['JobHistoryServer'] }}"
 
-- name: adding ssh keys for mapred at JobHistoryServer
-  authorized_key: user=mapred key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-  when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['JobHistoryServer'] }}"
+#- name: adding ssh keys for mapred at JobHistoryServer
+#  authorized_key: user=mapred key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+#  when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['JobHistoryServer'] }}"
 
 - name: Install Hadoop Distribution
   synchronize: src="{{ install_directory }}/hadoop" dest="{{ install_directory }}"
