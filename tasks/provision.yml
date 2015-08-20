@@ -23,4 +23,4 @@
 #  synchronize: src="{{ install_directory }}/hadoop" dest="{{ install_directory }}"
 
 - name: Setting permissions to allow hdfs, yarn and mapreduce users to write log directory
-  file: path={{ install_directory}}/hadoop mode=0776 recurse=true
+  file: path={{ install_directory}}/hadoop mode=0775 recurse=true
