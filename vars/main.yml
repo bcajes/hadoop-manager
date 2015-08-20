@@ -1,7 +1,7 @@
 ---
 # vars file for provision_hadoop
 
-java_home: "{{ lookup('env', 'JAVA_HOME')  }}"
+java_home: "/usr/lib/jvm/java-8-oracle/"
 jsvc_home: "/usr/bin/jsvc"
 hostfile: '{{ inventory_dir }}/{{ inventory_file }}'
 install_directory: /opt/
