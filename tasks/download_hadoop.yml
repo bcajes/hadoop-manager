@@ -13,8 +13,14 @@
     line: "{{ item.line }}"
   with_items:
     - { regexp: '^export JAVA_HOME', line: 'export JAVA_HOME={{java_home}}' }
-    - { regexp: '^kernel.shmmax', line: 'kernel.shmmax = 134217728' }
-    - { regexp: '^fs.file-max', line: 'fs.file-max = 65536' }
+    - { regexp: '^export HADOOP_INSTALL', line: 'export HADOOP_INSTALL={{install_directory}}/hadoop-{{hadoop_version}}' }
+    - { regexp: '^export PATH=$PATH:$HADOOP_INSTALL/bin', line: 'export PATH=$PATH:$HADOOP_INSTALL/bin' }
+    - { regexp: '^export PATH=$PATH:$HADOOP_INSTALL/sbin', line: 'export PATH=$PATH:$HADOOP_INSTALL/sbin' }
+    - { regexp: '^export HADOOP_MAPRED_HOME=$HADOOP_INSTALL', line: 'export HADOOP_MAPRED_HOME=$HADOOP_INSTALL' }
+    - { regexp: '^export HADOOP_COMMON_HOME=$HADOOP_INSTALL', line: 'export HADOOP_COMMON_HOME=$HADOOP_INSTALL' }
+    - { regexp: '^export HADOOP_HDFS_HOME=$HADOOP_INSTALL', line: 'export HADOOP_HDFS_HOME=$HADOOP_INSTALL' }
+    - { regexp: '^export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native', line: 'export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native' }
+    - { regexp: '^export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"', line: 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"' } 
     
 #- name: Create link to hadoop bin
 #  file: src={{ install_directory }}/hadoop-{{ hadoop_version}}/bin/hadoop dest=/usr/local/bin/hadoop force=true state=link
