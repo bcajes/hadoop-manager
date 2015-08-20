@@ -4,4 +4,4 @@
   when: action == 'download' 
 
 - name: Untar hadoop package
-  shell: cd {{ install_directory }} && tar xzvf hadoop-*.tar.gz && mv hadoop-* hadoop
+  shell: cd {{ install_directory }} && tar xzvf hadoop-{{ hadoop_version }}.tar.gz && mv hadoop-{{ hadoop_version }} hadoop
