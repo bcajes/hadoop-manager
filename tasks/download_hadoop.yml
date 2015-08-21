@@ -15,6 +15,7 @@
   with_items:
     - { regexp: '^export JAVA_HOME', line: 'export JAVA_HOME={{java_home}}' }
     - { regexp: '^export HADOOP_INSTALL', line: 'export HADOOP_INSTALL={{install_directory}}/hadoop-{{hadoop_version}}' }
+    - { regexp: '^export HADOOP_HOME=\$HADOOP_INSTALL', line: 'export HADOOP_INSTALL=$HADOOP_INSTALL' }
     - { regexp: '^export PATH=\$PATH:\$HADOOP_INSTALL/bin', line: 'export PATH=$PATH:$HADOOP_INSTALL/bin' }
     - { regexp: '^export PATH=\$PATH:\$HADOOP_INSTALL/sbin', line: 'export PATH=$PATH:$HADOOP_INSTALL/sbin' }
     - { regexp: '^export HADOOP_MAPRED_HOME=\$HADOOP_INSTALL', line: 'export HADOOP_MAPRED_HOME=$HADOOP_INSTALL' }
