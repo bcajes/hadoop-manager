@@ -22,6 +22,6 @@
     - { regexp: '^export HADOOP_HDFS_HOME=\$HADOOP_INSTALL', line: 'export HADOOP_HDFS_HOME=$HADOOP_INSTALL' }
     - { regexp: '^export HADOOP_COMMON_LIB_NATIVE_DIR=\$HADOOP_INSTALL/lib/native', line: 'export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native' }
     - { regexp: '^export HADOOP_OPTS="-Djava.library.path=\$HADOOP_INSTALL/lib"', line: 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"' } 
-    
+    - { regexp: '^export HADOOP_CLASSPATH=\$HADOOP_CLASSPATH:\$HADOOP_INSTALL/share/hadoop/tools/lib/', line: 'export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HADOOP_INSTALL/share/hadoop/tools/lib/*' }
 #- name: Create link to hadoop bin
 #  file: src={{ install_directory }}/hadoop-{{ hadoop_version}}/bin/hadoop dest=/usr/local/bin/hadoop force=true state=link
