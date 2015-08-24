@@ -8,10 +8,10 @@
   
 - name: Set Hadoop global env vars
   lineinfile:
+    create: yes
     dest: /etc/profile.d/hadoop.sh
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    create: yes
     backrefs: true
   with_items:
     - { regexp: '^export JAVA_HOME', line: 'export JAVA_HOME={{java_home}}' }
