@@ -12,6 +12,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     create: yes
+    backrefs: true
   with_items:
     - { regexp: '^export JAVA_HOME', line: 'export JAVA_HOME={{java_home}}' }
     - { regexp: '^export HADOOP_INSTALL', line: 'export HADOOP_INSTALL={{install_directory}}/hadoop-{{hadoop_version}}' }
