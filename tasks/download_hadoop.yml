@@ -6,6 +6,9 @@
 - name: Untar hadoop package
   shell: cd {{ install_directory }} && tar xzvf hadoop-{{ hadoop_version }}.tar.gz 
   
+- name: Create Hadoop profile file
+  file: path=/etc/profile.d/hadoop.sh state=touch mode=0755
+  
 - name: Set Hadoop global env vars
   lineinfile:
     create: yes
