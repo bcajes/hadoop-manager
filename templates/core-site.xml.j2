@@ -4,6 +4,10 @@
     <value>hdfs://{% for host in groups['tag_namednode_true'] %}{{ host }}{% endfor %}:9000/</value>
 </property>
 <property>
+        <name>fs.default.name</name>
+        <value>hdfs://{% for host in groups['tag_namednode_true'] %}{{ host }}{% endfor %}:9000/</value>
+ </property>
+<property>
     <name>io.buffer.size</name>
     <value>131072</value>
 </property>
