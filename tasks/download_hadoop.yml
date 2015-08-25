@@ -1,6 +1,6 @@
 ---
 - name: Download Hadoop Distribution
-  get_url: url={{ distribution_link }} dest={{ install_directory }} mode=0777
+  get_url: url={{ distribution_link }} dest={{ install_directory }}/hadoop-{{hadoop_version}}.tar.gz mode=0777
   when: action == 'download' 
 
 - name: Untar hadoop package
