@@ -1,5 +1,5 @@
 - name: Setting permissions for log directory
-  remote_user: root
+  #remote_user: root
   file: path={{ install_directory}}/hadoop/logs mode=0777 state=directory
 
 - name: Start NameNode
