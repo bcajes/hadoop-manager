@@ -1,9 +1,8 @@
 ---
 # Update Configuration
 - name: update slaves configuration file
-  shell: cat "{{ hostfile }}" | sed -n '/\[slaves\]/,/^$/p' | grep -v "\[" > {{ install_directory }}/hadoop/etc/hadoop/slaves
+  template: src=slaves.j2 dest={{ install_directory }}/hadoop/etc/hadoop/slaves
   when: action == 'update_cluster_conf'
-  delegate_to: 127.0.0.1
 
 - name: Populate core-site.xml configuration file
   template: src=core-site.xml.j2 dest={{ install_directory }}/hadoop/etc/hadoop/core-site.xml
