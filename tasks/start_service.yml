@@ -10,7 +10,7 @@
   register: command_result
   when: action == "start_namenode" 
   
-- debug: msg="{{command_result}}"
+#- debug: msg="{{command_result}}"
 
 - name: Start Slave
   become: yes
@@ -19,7 +19,7 @@
   register: command_result
   when: action == "start_slave"
 
-- debug: msg="{{command_result}}"
+#- debug: msg="{{command_result}}"
 
 - name: Start ResourceManager
   become: yes
@@ -29,7 +29,7 @@
   #failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_resource_manager"
 
-- debug: msg="{{command_result}}"
+#- debug: msg="{{command_result}}"
 
 - name: Start WebAppProxy
   become: yes
@@ -39,7 +39,7 @@
   #failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_webapp_proxy"
 
-- debug: msg="{{command_result}}"
+#- debug: msg="{{command_result}}"
 
 - name: Start JobHistoryServer
   become: yes
@@ -49,4 +49,4 @@
   #failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_jobhistory_server"
 
-- debug: msg="{{command_result}}"
+#- debug: msg="{{command_result}}"
