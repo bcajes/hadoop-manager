@@ -29,4 +29,4 @@
     - { regexp: '^export HADOOP_OPTS="-Djava.library.path=\$HADOOP_INSTALL/lib"', line: 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"' } 
     - { regexp: '^export HADOOP_CLASSPATH=\$HADOOP_CLASSPATH:\$HADOOP_INSTALL/share/hadoop/tools/lib/', line: 'export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HADOOP_INSTALL/share/hadoop/tools/lib/*' }
 - name: Create link to hadoop bin
-  file: src={{ install_directory }}/hadoop-{{ hadoop_version}}/bin/hadoop dest={{install_directory}}/hadoop force=true state=link
+  file: src={{ install_directory }}/hadoop-{{ hadoop_version}} dest={{install_directory}}/hadoop force=true state=link
