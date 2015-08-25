@@ -6,7 +6,7 @@
     - { name: 'yarn', groups: 'users', password: "{{ yarn_user_pass }}" }
 
 - name: adding ssh keys for Hadoop users
-  authorized_key: user={{ item }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  authorized_key: user={{ item }} key="{{ lookup('file', 'hadoop_id_rsa.pub') }}"
   with_items:
     - hdfs
     - yarn
@@ -16,7 +16,7 @@
   when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['tag_namednode_true'] }}"
 
 - name: adding ssh keys for mapred at JobHistoryServer
-  authorized_key: user=mapred key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  authorized_key: user=mapred key="{{ lookup('file', 'hadoop_id_rsa.pub') }}"
   when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['tag_namednode_true'] }}"
 
 #- name: Install Hadoop Distribution
