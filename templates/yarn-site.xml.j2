@@ -14,15 +14,15 @@
 </property>
 <property>
     <name>yarn.resourcemanager.address</name>
-    <value>{% for host in groups['tag_namednode_true'] %} {{ host }} {% endfor %}:9001</value>
+    <value>{% for host in groups['tag_namednode_true'] %}{{ host }}{% endfor %}:9001</value>
 </property>
 <property>
     <name>yarn.resourcemanager.scheduler.address</name>
-    <value>{% for host in groups['tag_namednode_true'] %} {{ host }} {% endfor %}:9002</value>
+    <value>{% for host in groups['tag_namednode_true'] %}{{ host }}{% endfor %}:9002</value>
 </property>
 <property>
     <name>yarn.resourcemanager.resource-tracker.address</name>
-    <value>{% for host in groups['tag_namednode_true'] %} {{ host }} {% endfor %}:9003</value>
+    <value>{% for host in groups['tag_namednode_true'] %}{{ host }}{% endfor %}:9003</value>
 </property>
 <property>
     <name>yarn.resourcemanager.admin.address</name>
