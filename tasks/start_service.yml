@@ -11,7 +11,7 @@
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_namenode" 
   
-- debug: msg="{{str(command_result)}}"
+- debug: msg="{{command_result}}"
 
 - name: Start Slave
   become: yes
@@ -21,7 +21,7 @@
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_slave"
 
-- debug: msg="{{str(command_result)}}"
+- debug: msg="{{command_result}}"
 
 - name: Start ResourceManager
   become: yes
@@ -31,7 +31,7 @@
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_resource_manager"
 
-- debug: msg="{{str(command_result)}}"
+- debug: msg="{{command_result}}"
 
 - name: Start WebAppProxy
   become: yes
@@ -41,7 +41,7 @@
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_webapp_proxy"
 
-- debug: msg="{{str(command_result)}}"
+- debug: msg="{{command_result}}"
 
 - name: Start JobHistoryServer
   become: yes
@@ -51,4 +51,4 @@
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_jobhistory_server"
 
-- debug: msg="{{str(command_result)}}"
+- debug: msg="{{command_result}}"
