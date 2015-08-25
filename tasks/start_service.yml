@@ -8,6 +8,7 @@
   become_user: hdfs
   shell: "{{ install_directory }}/hadoop/sbin/hadoop-daemon.sh --config {{ install_directory }}/hadoop/etc/hadoop --script hdfs start namenode"
   register: command_result
+  fail: msg="{{command_result.stderr}}"
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_namenode" 
 
@@ -16,6 +17,7 @@
   become_user: root
   shell: "HADOOP_SECURE_DN_USER=hdfs {{ install_directory }}/hadoop/sbin/hadoop-daemon.sh --config {{ install_directory }}/hadoop/etc/hadoop --script hdfs start datanode"
   register: command_result
+  fail: msg="{{command_result.stderr}}"
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_slave"
 
@@ -24,6 +26,7 @@
   become_user: yarn
   shell: "{{ install_directory }}/hadoop/sbin/yarn-daemon.sh --config {{ install_directory }}/hadoop/etc/hadoop start resourcemanager" 
   register: command_result
+  fail: msg="{{command_result.stderr}}"
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_resource_manager"
 
@@ -32,6 +35,7 @@
   become_user: yarn
   shell: "{{ install_directory }}/hadoop/bin/yarn start proxyserver --config {{ install_directory }}/hadoop/etc/hadoop"
   register: command_result
+  fail: msg="{{command_result.stderr}}"
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_webapp_proxy"
 
@@ -40,5 +44,6 @@
   become_user: mapred
   command: "{{ install_directory }}/hadoop/sbin/mr-jobhistory-daemon.sh start historyserver --config {{ install_directory }}/hadoop/etc/hadoop"
   register: command_result
+  fail: msg="{{command_result.stderr}}"
   failed_when: "'stderr:' in command_result.stderr"
   when: action == "start_jobhistory_server"
