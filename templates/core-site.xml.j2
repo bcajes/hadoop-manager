@@ -1,7 +1,7 @@
 <configuration>
 <property>
     <name>fs.default.FS</name>
-    <value>hdfs://{% for host in groups['NameNode'] %} {{ host }} {% endfor %}:9000/</value>
+    <value>hdfs://{% for host in groups['tag_namednode_true'] %} {{ host }} {% endfor %}:9000/</value>
 </property>
 <property>
     <name>io.buffer.size</name>
