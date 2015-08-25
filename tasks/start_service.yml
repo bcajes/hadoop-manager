@@ -10,7 +10,7 @@
   when: action == "start_namenode" 
 
 - name: Start Slave
-  remote_user: root
+  #remote_user: root
   shell: "HADOOP_SECURE_DN_USER=hdfs {{ install_directory }}/hadoop/sbin/hadoop-daemon.sh --config {{ install_directory }}/hadoop/etc/hadoop --script hdfs start datanode"
   register: command_result
   failed_when: "'stderr:' in command_result.stderr"
