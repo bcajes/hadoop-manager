@@ -1,6 +1,6 @@
 - name: Setting permissions for log directory
-  become: root
-  become_user: postgres
+  become: yes
+  become_user: root
   file: path={{ install_directory}}/hadoop/logs mode=0777 state=directory
 
 - name: Start NameNode
