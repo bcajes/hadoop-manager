@@ -1,11 +1,7 @@
 - name: Setting permissions for log directory
-  become: yes
-  become_user: root
-  file: path={{ install_directory}}/hadoop/logs mode=0777 state=directory
+  file: path={{ install_directory}}/ mode=0777 state=directory recurse=yes
 
 - name: Start NameNode
-  become: yes
-  become_user: root
   shell: "{{ install_directory }}/hadoop/sbin/hadoop-daemon.sh --config {{ install_directory }}/hadoop/etc/hadoop --script hdfs start namenode"
   ignore_errors: yes
   register: command_result
@@ -14,8 +10,6 @@
 - debug: msg="{{command_result}}"
 
 - name: Start Slave
-  become: yes
-  become_user: root
   shell: "HADOOP_SECURE_DN_USER=hdfs {{ install_directory }}/hadoop/sbin/hadoop-daemon.sh --config {{ install_directory }}/hadoop/etc/hadoop --script hdfs start datanode"
   register: command_result
   ignore_errors: yes
