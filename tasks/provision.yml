@@ -5,25 +5,25 @@
 - name: Setting permissions for hdfs log
   file: path={{install_directory}}/logs mode=0777 state=directory recurse=yes
 
-- name: add Hadoop users
-  user: name={{ item.name }} generate_ssh_key=yes state=present password={{ item.password }} groups={{ item.groups }} force=yes
-  with_items:
-    - { name: 'hdfs', groups: 'users', password: "{{ hdfs_user_pass }}" }
-    - { name: 'yarn', groups: 'users', password: "{{ yarn_user_pass }}" }
+#- name: add Hadoop users
+#  user: name={{ item.name }} generate_ssh_key=yes state=present password={{ item.password }} groups={{ item.groups }} force=yes
+#  with_items:
+#    - { name: 'hdfs', groups: 'users', password: "{{ hdfs_user_pass }}" }
+#    - { name: 'yarn', groups: 'users', password: "{{ yarn_user_pass }}" }
 
-- name: adding ssh keys for Hadoop users
-  authorized_key: user={{ item }} key="{{ lookup('file', 'hadoop_id_rsa.pub') }}" 
-  with_items:
-    - hdfs
-    - yarn
+#- name: adding ssh keys for Hadoop users
+#  authorized_key: user={{ item }} key="{{ lookup('file', 'hadoop_id_rsa.pub') }}" 
+#  with_items:
+#    - hdfs
+#    - yarn
 
-- name: add mapred user for JobHistoryServer
-  user: name=mapred generate_ssh_key=yes state=present password={{ mapred_user_pass }} groups=users force=yes
-  when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['tag_namednode_true'] }}"
+#- name: add mapred user for JobHistoryServer
+#  user: name=mapred generate_ssh_key=yes state=present password={{ mapred_user_pass }} groups=users force=yes
+#  when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['tag_namednode_true'] }}"
 
-- name: adding ssh keys for mapred at JobHistoryServer
-  authorized_key: user=mapred key="{{ lookup('file', 'hadoop_id_rsa.pub') }}" 
-  when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['tag_namednode_true'] }}"
+#- name: adding ssh keys for mapred at JobHistoryServer
+#  authorized_key: user=mapred key="{{ lookup('file', 'hadoop_id_rsa.pub') }}" 
+#  when: action == 'provision' and "{{ ansible_hostname }}" in "{{ groups['tag_namednode_true'] }}"
 
 #- name: Install Hadoop Distribution
 #  synchronize: src="{{ install_directory }}/hadoop" dest="{{ install_directory }}"
