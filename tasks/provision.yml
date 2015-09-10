@@ -3,7 +3,7 @@
   file: path={{hdfs_root}}/ mode=0777 state=directory recurse=yes
   
 - name: Setting permissions for hdfs log
-  file: path={{install_directory}}/logs mode=0777 state=directory recurse=yes
+  file: path={{install_directory}}/hadoop/logs mode=0777 state=directory recurse=yes
 
 #- name: add Hadoop users
 #  user: name={{ item.name }} generate_ssh_key=yes state=present password={{ item.password }} groups={{ item.groups }} force=yes
