@@ -7,7 +7,7 @@
   shell: cd {{ install_directory }} && tar xzvf hadoop-{{ hadoop_version }}.tar.gz 
 
 - name: Setup hadoop root dir
-  file: path={{ install_directory }}/hadoop-{{ hadoop_version}} state=touch mode=0755 owner={{hadoop_user}} recurse=yes
+  file: path={{ install_directory }}/hadoop-{{ hadoop_version}} state=directory mode=0755 owner={{hadoop_user}} recurse=yes
   
 - name: Create Hadoop profile file
   file: path=/etc/profile.d/hadoop.sh state=touch mode=0755 owner=root
