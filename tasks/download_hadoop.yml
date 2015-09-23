@@ -1,7 +1,4 @@
 ---
-- name: Set hadoop install dir
-  file: path={{ install_directory }} state=touch mode=0755 owner={{hadoop_user}}
-
 - name: Download Hadoop Distribution
   get_url: url={{ distribution_link }} dest={{ install_directory }}/hadoop-{{hadoop_version}}.tar.gz mode=0777
   when: action == 'download' 
