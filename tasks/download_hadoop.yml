@@ -7,10 +7,10 @@
   shell: cd {{ install_directory }} && tar xzvf hadoop-{{ hadoop_version }}.tar.gz 
 
 - name: Setup hadoop root dir
-  file: path={{ install_directory }}/hadoop-{{ hadoop_version}} state=directory mode=0755 owner={{hadoop_user}} recurse=yes
+  file: path={{ install_directory }}/hadoop-{{ hadoop_version}} state=directory mode=0755 owner={{hadoop_user}} group={{hadoop_user}}recurse=yes
   
 - name: Create Hadoop profile file
-  file: path=/etc/profile.d/hadoop.sh state=touch mode=0755 owner=root
+  file: path=/etc/profile.d/hadoop.sh state=touch mode=0755 owner=root group=root
   
 - name: Set Hadoop global env vars
   lineinfile:
@@ -32,4 +32,4 @@
     - { regexp: '^export HADOOP_OPTS="-Djava.library.path=\$HADOOP_INSTALL/lib"', line: 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"' } 
     - { regexp: '^export HADOOP_CLASSPATH=\$HADOOP_CLASSPATH:\$HADOOP_INSTALL/share/hadoop/tools/lib/', line: 'export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HADOOP_INSTALL/share/hadoop/tools/lib/*' }
 - name: Create link to hadoop bin
-  file: src={{ install_directory }}/hadoop-{{ hadoop_version}} dest={{install_directory}}/hadoop force=true state=link mode=0755 owner={{hadoop_user}}
+  file: src={{ install_directory }}/hadoop-{{ hadoop_version}} dest={{install_directory}}/hadoop force=true state=link mode=0755 owner={{hadoop_user}} group={{hadoop_user}}
