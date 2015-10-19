@@ -2,8 +2,8 @@
 - name: Setting permissions for hdfs root
   file: path={{hdfs_root}}/ mode=0755 state=directory recurse=yes owner={{hadoop_user}} group={{hadoop_user}}
   
-- name: Setting permissions for hdfs log
-  file: path={{install_directory}}/hadoop/logs mode=0755 state=directory recurse=yes owner={{hadoop_user}} group={{hadoop_user}}
+- name: Setting permissions for hadoop
+  file: path={{install_directory}}/hadoop/ mode=0755 state=directory recurse=yes owner={{hadoop_user}} group={{hadoop_user}}
 
 #- name: add Hadoop users
 #  user: name={{ item.name }} generate_ssh_key=yes state=present password={{ item.password }} groups={{ item.groups }} force=yes
